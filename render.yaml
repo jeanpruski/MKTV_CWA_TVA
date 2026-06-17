@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: hubspot-apply-tax-rate-action
+    runtime: docker
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HUBSPOT_PORTAL_ID
+        value: "2660877"
+      - key: HUBSPOT_PRIVATE_APP_TOKEN
+        sync: false

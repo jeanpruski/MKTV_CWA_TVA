@@ -6,10 +6,13 @@ import { logger } from './utils/logger';
 dotenv.config();
 
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: '1mb' }));
 
 app.get('/health', (_req, res) => {
-  res.status(200).json({ status: 'ok' });
+  res.status(200).json({
+    status: 'ok',
+    service: 'hubspot-apply-tax-rate'
+  });
 });
 
 app.use('/hubspot/workflow-actions/apply-tax-rate', applyTaxRateRouter);
@@ -18,13 +21,24 @@ const port = Number(process.env.PORT ?? 3000);
 const token = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
 
 if (!token) {
-  logger.error('HUBSPOT_PRIVATE_APP_TOKEN is not defined. Vérifiez votre fichier .env.');
+  logger.error('HUBSPOT_PRIVATE_APP_TOKEN is not defined. Verifiez votre fichier .env.');
   process.exit(1);
 }
 
 app.use((err: Error, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
-  logger.error('Unhandled error', err.message);
-  res.status(500).json({ outputFields: { status: 'error', message: 'Internal server error' } });
+  logger.error('Unhandled error', { error: err.message });
+  res.status(500).json({
+    outputFields: {
+      status: 'error',
+      selected_tax_rate: '',
+      tax_rate_group_id: '',
+      updated_count: 0,
+      error_count: 0,
+      updated_ids: '',
+      error_ids: '',
+      message: 'Internal server error'
+    }
+  });
 });
 
 app.listen(port, () => {

@@ -1,0 +1,159 @@
+{
+  "actionUrl": "https://YOUR_PUBLIC_DOMAIN/hubspot/workflow-actions/apply-tax-rate",
+  "published": true,
+  "objectTypes": [
+    "0-3"
+  ],
+  "inputFields": [
+    {
+      "typeDefinition": {
+        "name": "tax_rate_key",
+        "type": "enumeration",
+        "fieldType": "select",
+        "options": [
+          {
+            "label": "TVA 0%",
+            "value": "VAT_0",
+            "displayOrder": 0
+          },
+          {
+            "label": "TVA 3%",
+            "value": "VAT_3",
+            "displayOrder": 1
+          },
+          {
+            "label": "TVA 8.5%",
+            "value": "VAT_8_5",
+            "displayOrder": 2
+          },
+          {
+            "label": "TVA 17%",
+            "value": "VAT_17",
+            "displayOrder": 3
+          },
+          {
+            "label": "TVA 20%",
+            "value": "VAT_20",
+            "displayOrder": 4
+          },
+          {
+            "label": "TVA 21%",
+            "value": "VAT_21",
+            "displayOrder": 5
+          }
+        ]
+      },
+      "supportedValueTypes": [
+        "STATIC_VALUE"
+      ],
+      "isRequired": true
+    }
+  ],
+  "objectRequestOptions": {
+    "properties": [
+      "hs_object_id"
+    ]
+  },
+  "outputFields": [
+    {
+      "typeDefinition": {
+        "name": "status",
+        "type": "string",
+        "fieldType": "text"
+      }
+    },
+    {
+      "typeDefinition": {
+        "name": "selected_tax_rate",
+        "type": "string",
+        "fieldType": "text"
+      }
+    },
+    {
+      "typeDefinition": {
+        "name": "tax_rate_group_id",
+        "type": "string",
+        "fieldType": "text"
+      }
+    },
+    {
+      "typeDefinition": {
+        "name": "updated_count",
+        "type": "number",
+        "fieldType": "number"
+      }
+    },
+    {
+      "typeDefinition": {
+        "name": "error_count",
+        "type": "number",
+        "fieldType": "number"
+      }
+    },
+    {
+      "typeDefinition": {
+        "name": "updated_ids",
+        "type": "string",
+        "fieldType": "textarea"
+      }
+    },
+    {
+      "typeDefinition": {
+        "name": "error_ids",
+        "type": "string",
+        "fieldType": "textarea"
+      }
+    },
+    {
+      "typeDefinition": {
+        "name": "message",
+        "type": "string",
+        "fieldType": "textarea"
+      }
+    }
+  ],
+  "labels": {
+    "en": {
+      "actionName": "Apply tax rate to deal line items",
+      "actionDescription": "Applies the selected HubSpot tax rate group to every line item associated with the enrolled deal.",
+      "appDisplayName": "Deal tax tools",
+      "inputFieldLabels": {
+        "tax_rate_key": "TVA"
+      },
+      "inputFieldDescriptions": {
+        "tax_rate_key": "Tax rate to apply to all associated line items."
+      },
+      "outputFieldLabels": {
+        "status": "Status",
+        "selected_tax_rate": "Selected tax rate",
+        "tax_rate_group_id": "Tax rate group ID",
+        "updated_count": "Updated line items",
+        "error_count": "Failed line items",
+        "updated_ids": "Updated line item IDs",
+        "error_ids": "Failed line item IDs",
+        "message": "Message"
+      }
+    },
+    "fr": {
+      "actionName": "Appliquer la TVA aux line items du deal",
+      "actionDescription": "Applique le groupe de TVA selectionne a tous les line items associes au deal inscrit.",
+      "appDisplayName": "Outils TVA Deal",
+      "inputFieldLabels": {
+        "tax_rate_key": "TVA"
+      },
+      "inputFieldDescriptions": {
+        "tax_rate_key": "Taux de TVA a appliquer a tous les line items associes."
+      },
+      "outputFieldLabels": {
+        "status": "Statut",
+        "selected_tax_rate": "TVA selectionnee",
+        "tax_rate_group_id": "ID du groupe de TVA",
+        "updated_count": "Line items mis a jour",
+        "error_count": "Line items en erreur",
+        "updated_ids": "IDs mis a jour",
+        "error_ids": "IDs en erreur",
+        "message": "Message"
+      }
+    }
+  }
+}

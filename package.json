@@ -1,0 +1,38 @@
+{
+  "name": "hubspot-apply-tax-rate-action",
+  "version": "1.0.0",
+  "description": "HubSpot Custom Workflow Action to apply a tax rate group to all deal line items.",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/server.js",
+    "cwa:prepare": "node scripts/prepareCwaDefinition.js",
+    "cwa:create": "node scripts/createCwaAction.js"
+  },
+  "keywords": [
+    "hubspot",
+    "workflow",
+    "tax",
+    "express",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.2"
+  }
+}

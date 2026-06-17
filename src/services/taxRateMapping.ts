@@ -18,6 +18,16 @@ export const TAX_RATE_LABEL_BY_KEY: Record<keyof typeof TAX_RATE_MAPPING, string
 
 export type TaxRateKey = keyof typeof TAX_RATE_MAPPING;
 
-export function getTaxRateGroupId(key: string): string | undefined {
-  return (TAX_RATE_MAPPING as Record<string, string>)[key];
+export const TAX_RATE_KEYS = Object.keys(TAX_RATE_MAPPING) as TaxRateKey[];
+
+export function isTaxRateKey(key: string): key is TaxRateKey {
+  return key in TAX_RATE_MAPPING;
+}
+
+export function getTaxRateGroupId(key: TaxRateKey): string {
+  return TAX_RATE_MAPPING[key];
+}
+
+export function getTaxRateLabel(key: TaxRateKey): string {
+  return TAX_RATE_LABEL_BY_KEY[key];
 }

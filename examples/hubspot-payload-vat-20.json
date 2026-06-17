@@ -1,0 +1,16 @@
+{
+  "origin": {
+    "portalId": 12345678,
+    "actionDefinitionId": 987654,
+    "actionDefinitionVersion": 1
+  },
+  "object": {
+    "objectId": "123456789",
+    "objectType": "DEAL"
+  },
+  "inputFields": {
+    "hs_object_id": "123456789",
+    "tax_rate_key": "VAT_20"
+  },
+  "callbackId": "ap-123456789-987654321"
+}
