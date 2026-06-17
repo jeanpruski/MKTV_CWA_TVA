@@ -51,6 +51,7 @@ PORT=3000
 HUBSPOT_PORTAL_ID=2660877
 HUBSPOT_PRIVATE_APP_TOKEN=pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 HUBSPOT_APP_ID=123456
+HUBSPOT_DEVELOPER_API_KEY=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ACTION_BASE_URL=https://YOUR_PUBLIC_DOMAIN
 NODE_ENV=development
 ```
@@ -141,6 +142,7 @@ npm run cwa:create
 
 Le compte HubSpot vise par defaut pour ce projet est `2660877`. Avant de deployer, verifier que le token et/ou le CLI HubSpot pointent bien vers ce portail.
 `HUBSPOT_APP_ID` correspond a l'app HubSpot qui portera la Custom Workflow Action. Ce n'est pas le portal ID.
+`HUBSPOT_DEVELOPER_API_KEY` est necessaire pour creer la definition de Custom Workflow Action via l'API Developer HubSpot. Elle est differente du Private App Token utilise par le runtime.
 
 Le fichier d'exemple est disponible ici:
 
@@ -166,8 +168,7 @@ Equivalent curl:
 
 ```bash
 curl --request POST \
-  --url "https://api.hubapi.com/automation/v4/actions/$HUBSPOT_APP_ID" \
-  --header "Authorization: Bearer $HUBSPOT_PRIVATE_APP_TOKEN" \
+  --url "https://api.hubapi.com/automation/v4/actions/$HUBSPOT_APP_ID?hapikey=$HUBSPOT_DEVELOPER_API_KEY" \
   --header "Content-Type: application/json" \
   --data @generated/custom-workflow-action-definition.json
 ```

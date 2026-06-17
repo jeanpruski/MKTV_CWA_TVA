@@ -3,13 +3,13 @@ const path = require('node:path');
 const axios = require('axios');
 require('dotenv').config();
 
-const token = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
+const developerApiKey = process.env.HUBSPOT_DEVELOPER_API_KEY;
 const appId = process.env.HUBSPOT_APP_ID;
 const definitionPath = path.resolve(__dirname, '..', 'generated', 'custom-workflow-action-definition.json');
 
 async function main() {
-  if (!token) {
-    throw new Error('HUBSPOT_PRIVATE_APP_TOKEN is required');
+  if (!developerApiKey) {
+    throw new Error('HUBSPOT_DEVELOPER_API_KEY is required to create HubSpot Custom Workflow Actions');
   }
 
   if (!appId) {
@@ -26,8 +26,10 @@ async function main() {
     `https://api.hubapi.com/automation/v4/actions/${encodeURIComponent(appId)}`,
     definition,
     {
+      params: {
+        hapikey: developerApiKey
+      },
       headers: {
-        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
       timeout: 15000
