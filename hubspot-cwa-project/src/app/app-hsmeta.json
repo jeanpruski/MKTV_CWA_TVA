@@ -1,0 +1,33 @@
+{
+  "uid": "mktv_cwa_tva_app",
+  "type": "app",
+  "config": {
+    "description": "Custom workflow action that applies a selected TVA rate to all line items associated with an enrolled deal.",
+    "name": "MKTV TVA Workflow Action",
+    "distribution": "private",
+    "auth": {
+      "type": "static",
+      "requiredScopes": [
+        "oauth",
+        "crm.objects.deals.read",
+        "crm.objects.line_items.read",
+        "crm.objects.line_items.write"
+      ],
+      "optionalScopes": [],
+      "conditionallyRequiredScopes": []
+    },
+    "permittedUrls": {
+      "fetch": [
+        "https://6anzfwhzi4.execute-api.eu-west-3.amazonaws.com"
+      ],
+      "iframe": [],
+      "img": []
+    },
+    "support": {
+      "supportEmail": "support@example.com",
+      "documentationUrl": "https://example.com/docs",
+      "supportUrl": "https://example.com/support",
+      "supportPhone": "+18005555555"
+    }
+  }
+}

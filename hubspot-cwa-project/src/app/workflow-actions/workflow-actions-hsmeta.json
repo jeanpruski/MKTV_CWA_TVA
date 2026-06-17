@@ -1,0 +1,136 @@
+{
+  "uid": "mktv_cwa_tva_workflow_action",
+  "type": "workflow-action",
+  "config": {
+    "actionUrl": "https://6anzfwhzi4.execute-api.eu-west-3.amazonaws.com/hubspot/workflow-actions/apply-tax-rate",
+    "isPublished": true,
+    "supportedClients": [
+      {
+        "client": "WORKFLOWS"
+      }
+    ],
+    "inputFields": [
+      {
+        "typeDefinition": {
+          "name": "tax_rate_key",
+          "type": "enumeration",
+          "fieldType": "select",
+          "options": [
+            {
+              "value": "VAT_0",
+              "label": "TVA 0%"
+            },
+            {
+              "value": "VAT_3",
+              "label": "TVA 3%"
+            },
+            {
+              "value": "VAT_8_5",
+              "label": "TVA 8.5%"
+            },
+            {
+              "value": "VAT_17",
+              "label": "TVA 17%"
+            },
+            {
+              "value": "VAT_20",
+              "label": "TVA 20%"
+            },
+            {
+              "value": "VAT_21",
+              "label": "TVA 21%"
+            }
+          ]
+        },
+        "supportedValueTypes": [
+          "STATIC_VALUE"
+        ],
+        "isRequired": true
+      }
+    ],
+    "outputFields": [
+      {
+        "typeDefinition": {
+          "name": "status",
+          "type": "string",
+          "fieldType": "text"
+        }
+      },
+      {
+        "typeDefinition": {
+          "name": "selected_tax_rate",
+          "type": "string",
+          "fieldType": "text"
+        }
+      },
+      {
+        "typeDefinition": {
+          "name": "tax_rate_group_id",
+          "type": "string",
+          "fieldType": "text"
+        }
+      },
+      {
+        "typeDefinition": {
+          "name": "updated_count",
+          "type": "number",
+          "fieldType": "number"
+        }
+      },
+      {
+        "typeDefinition": {
+          "name": "error_count",
+          "type": "number",
+          "fieldType": "number"
+        }
+      },
+      {
+        "typeDefinition": {
+          "name": "updated_ids",
+          "type": "string",
+          "fieldType": "textarea"
+        }
+      },
+      {
+        "typeDefinition": {
+          "name": "error_ids",
+          "type": "string",
+          "fieldType": "textarea"
+        }
+      },
+      {
+        "typeDefinition": {
+          "name": "message",
+          "type": "string",
+          "fieldType": "textarea"
+        }
+      }
+    ],
+    "labels": {
+      "en": {
+        "actionName": "Apply TVA to deal line items",
+        "actionDescription": "Applies the selected TVA tax rate group to every line item associated with the enrolled deal.",
+        "actionCardContent": "Apply {{tax_rate_key}} to associated line items",
+        "inputFieldLabels": {
+          "tax_rate_key": "TVA"
+        },
+        "inputFieldDescriptions": {
+          "tax_rate_key": "Tax rate to apply to all associated line items."
+        },
+        "outputFieldLabels": {
+          "status": "Status",
+          "selected_tax_rate": "Selected tax rate",
+          "tax_rate_group_id": "Tax rate group ID",
+          "updated_count": "Updated line items",
+          "error_count": "Failed line items",
+          "updated_ids": "Updated line item IDs",
+          "error_ids": "Failed line item IDs",
+          "message": "Message"
+        }
+      }
+    },
+    "objectTypes": [
+      "DEAL"
+    ]
+  }
+}

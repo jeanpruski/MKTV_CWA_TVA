@@ -140,6 +140,39 @@ npm run cwa:create
 
 ## 4. Creer la custom action via l'API HubSpot
 
+Chemin recommande sur ce compte: HubSpot Projects.
+
+Le projet HubSpot est dans:
+
+```text
+hubspot-cwa-project/
+```
+
+Il declare la Custom Workflow Action et pointe vers l'endpoint AWS:
+
+```text
+https://6anzfwhzi4.execute-api.eu-west-3.amazonaws.com/hubspot/workflow-actions/apply-tax-rate
+```
+
+Commandes:
+
+```bash
+cd hubspot-cwa-project
+PATH=/Users/jeanpruski/.nvm/versions/node/v22.19.0/bin:$PATH hs project validate --account 2660877
+PATH=/Users/jeanpruski/.nvm/versions/node/v22.19.0/bin:$PATH hs project upload --account 2660877 --force-create
+```
+
+Projet actuellement deploye sur `2660877`:
+
+```text
+Project: mktv-cwa-tva
+Project ID: 103466105
+App ID: 42947787
+Deployed Build: #1
+```
+
+Ancien chemin API direct:
+
 Le compte HubSpot vise par defaut pour ce projet est `2660877`. Avant de deployer, verifier que le token et/ou le CLI HubSpot pointent bien vers ce portail.
 `HUBSPOT_APP_ID` correspond a l'app HubSpot qui portera la Custom Workflow Action. Ce n'est pas le portal ID.
 `HUBSPOT_DEVELOPER_API_KEY` est necessaire pour creer la definition de Custom Workflow Action via l'API Developer HubSpot. Elle est differente du Private App Token utilise par le runtime.
