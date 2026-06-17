@@ -91,6 +91,7 @@ Le projet contient:
 
 - `Dockerfile` pour construire le service Node.js.
 - `render.yaml` pour creer un web service Docker depuis GitHub.
+- `serverless.yml` pour deployer le meme backend sur AWS Lambda + API Gateway avec Serverless Framework.
 
 Variables a configurer dans l'hebergeur:
 
@@ -104,6 +105,36 @@ Une fois le service deploye, verifier:
 
 ```bash
 curl https://your-service.example.com/health
+```
+
+### AWS Serverless
+
+Configurer les credentials AWS dans votre environnement, puis mettre les variables HubSpot dans `.env` ou dans le shell:
+
+```env
+HUBSPOT_PORTAL_ID=2660877
+HUBSPOT_PRIVATE_APP_TOKEN=pat-...
+AWS_REGION=eu-west-3
+STAGE=test
+```
+
+Verifier le package:
+
+```bash
+npm run aws:package
+```
+
+Deployer:
+
+```bash
+npm run aws:deploy
+```
+
+Serverless retourne une URL API Gateway. Utiliser cette base URL pour creer la Custom Workflow Action:
+
+```bash
+ACTION_BASE_URL=https://xxxx.execute-api.eu-west-3.amazonaws.com npm run cwa:prepare
+npm run cwa:create
 ```
 
 ## 4. Creer la custom action via l'API HubSpot

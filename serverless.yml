@@ -1,0 +1,37 @@
+service: hubspot-apply-tax-rate-action
+frameworkVersion: '3'
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ${opt:region, env:AWS_REGION, 'eu-west-3'}
+  stage: ${opt:stage, env:STAGE, 'test'}
+  memorySize: 256
+  timeout: 25
+  logRetentionInDays: 14
+  httpApi:
+    cors: false
+  environment:
+    NODE_ENV: production
+    HUBSPOT_PORTAL_ID: ${env:HUBSPOT_PORTAL_ID, '2660877'}
+    HUBSPOT_PRIVATE_APP_TOKEN: ${env:HUBSPOT_PRIVATE_APP_TOKEN}
+
+functions:
+  api:
+    handler: dist/lambda.handler
+    events:
+      - httpApi:
+          method: GET
+          path: /health
+      - httpApi:
+          method: POST
+          path: /hubspot/workflow-actions/apply-tax-rate
+
+package:
+  excludeDevDependencies: true
+  patterns:
+    - '!**'
+    - dist/**
+    - node_modules/**
+    - '!node_modules/.package-lock.json'
